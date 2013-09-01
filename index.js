@@ -1,6 +1,7 @@
-function dotAccess(obj, path) {
+exports.get = function (obj, path) {
 	var parts = path.split('.');
 	var value = obj;
+
 	for (var i = 0; i < parts.length; i++) {
 		try {
 			value = value[parts[i]];
@@ -11,16 +12,14 @@ function dotAccess(obj, path) {
 	}
 
 	return value;
-}
+};
 
-module.exports = dotAccess;
+exports.set = function (obj, path, value) {
+	var parts = path.split('.');
+	var child = parts.pop();
+	var parent = parts.length === 0 ? obj : exports.get(obj, parts.join('.'));
 
-// Test
-// console.log(dotAccess({
-// 	user: {
-// 		name: {
-// 			first: 'nathan',
-// 			last: 'tran'
-// 		}
-// 	}
-// }, 'user.name.last'));
+	if (parent && typeof parent === 'object') {
+		parent[child] = value;
+	}
+};
