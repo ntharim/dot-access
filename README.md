@@ -1,7 +1,10 @@
-
 # dot-access
 
   Access object properties using dot notation.
+  
+    var dotAccess = require('dot-access');
+    var user = { fullname: { first: 'Joe', last: 'M' } };
+    dotAccess(user, 'user.fullname.first'); // Joe
 
 ## Installation
 
