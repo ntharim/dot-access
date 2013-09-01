@@ -21,5 +21,8 @@ exports.set = function (obj, path, value) {
 
   if (parent && typeof parent === 'object') {
     parent[child] = value;
+    return true;
   }
+
+  return false;
 };

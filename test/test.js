@@ -28,11 +28,14 @@ describe('dotAccess', function () {
 					}
 				}
 			};
-			dotAccess.set(user, 'name.first', 'Bob');
+			dotAccess.set(user, 'name.first', 'Bob').should.equal(true);
 			user.name.first.should.equal('Bob');
-			dotAccess.set(user, 'name.status.banned', false);
+			dotAccess.set(user, 'name.status.banned', false).should.equal(true);
 			user.name.status.banned.should.equal(false);
-			dotAccess.set(user, 'name', 'Bob');
+			dotAccess.set(user, 'name.middle.value', 'H').should.equal(false);
+			dotAccess.set(user, 'name.middle', 'H').should.equal(true);
+			user.name.middle.should.equal('H');
+			dotAccess.set(user, 'name', 'Bob').should.equal(true);
 			user.name.should.equal('Bob');
 		});
 	});
