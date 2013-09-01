@@ -5,6 +5,7 @@
     var dotAccess = require('dot-access');
     
     var user = { fullname: { first: 'Joe', last: 'M' } };
+    
     // get
     dotAccess.get(user, 'fullname.first'); // Joe
     
