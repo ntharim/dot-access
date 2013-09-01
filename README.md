@@ -1,7 +1,7 @@
 
 # dot-access
 
-  Access object properties using dot notation
+  Access object properties using dot notation.
 
 ## Installation
 

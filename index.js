@@ -13,6 +13,8 @@ function dotAccess(obj, path) {
 	return value;
 }
 
+module.exports = dotAccess;
+
 // Test
 // console.log(dotAccess({
 // 	user: {
