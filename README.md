@@ -7,11 +7,11 @@
     var user = { fullname: { first: 'Joe', last: 'M' } };
     
     // get
-    dotAccess.get(user, 'fullname.first'); // Joe
+    dotAccess.get(user, 'fullname.first'); // 'Joe'
     
     // or set
     dotAccess.set(user, 'fullname.last', 'T');
-    console.log(user.fullname.last); // T
+    console.log(user.fullname.last); // 'T'
 
 ## Installation
 
