@@ -4,14 +4,18 @@
   
     var dotAccess = require('dot-access');
     
-    var user = { fullname: { first: 'Joe', last: 'M' } };
+    var user = { 
+      fullname: { 
+        first: 'Joe', 
+        last: 'M' 
+      } 
+    };
     
     // get
     dotAccess.get(user, 'fullname.first'); // 'Joe'
     
     // or set
-    dotAccess.set(user, 'fullname.last', 'T');
-    console.log(user.fullname.last); // 'T'
+    dotAccess.set(user, 'fullname.last', 'T'); // 'T'
 
 ## Installation
 
