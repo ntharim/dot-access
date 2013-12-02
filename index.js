@@ -1,28 +1,9 @@
 exports.get = function (obj, path) {
-  var parts = path.split('.');
-  var value = obj;
-
-  for (var i = 0; i < parts.length; i++) {
-    try {
-      value = value[parts[i]];
-    } catch (e) {
-      value = undefined;
-      break;
-    }
-  }
-
-  return value;
+  var get = new Function('_', 'return _.' + path);
+  return get(obj);
 };
 
-exports.set = function (obj, path, value) {
-  var parts = path.split('.');
-  var child = parts.pop();
-  var parent = parts.length === 0 ? obj : exports.get(obj, parts.join('.'));
-
-  if (parent && typeof parent === 'object') {
-    parent[child] = value;
-    return true;
-  }
-
-  return false;
+exports.set = function (obj, path, value) {  
+  var set = new Function('_', 'val', '_.' + path + ' = val');
+  set(obj, value);
 };
