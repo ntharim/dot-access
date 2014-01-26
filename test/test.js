@@ -1,7 +1,8 @@
-var dotAccess = require('../');
+var dot = require('../');
 var should = require('chai').should();
+var assert = require('chai').assert;
 
-describe('dotAccess', function () {
+describe('dot', function () {
 	describe('get', function () {
 		it('should return get the correct value', function () {
 			var user = {
@@ -13,10 +14,11 @@ describe('dotAccess', function () {
 					}
 				}
 			};
-			dotAccess.get(user, 'name').should.be.an('object');
-			dotAccess.get(user, 'name.first').should.equal('Joe');
-			dotAccess.get(user, 'name.last').should.equal('M');
-			dotAccess.get(user, 'name.status.banned').should.equal(true);
+			dot.get(user, 'name').should.be.an('object');
+			dot.get(user, 'name.first').should.equal('Joe');
+			dot.get(user, 'name.last').should.equal('M');
+			dot.get(user, 'name.status.banned').should.equal(true);
+			assert.equal(dot.get(user, 'nam'), undefined);
 		});
 		it('should set the correct value at the correct path', function () {
 			var user = {
@@ -28,13 +30,13 @@ describe('dotAccess', function () {
 					}
 				}
 			};
-			dotAccess.set(user, 'name.first', 'Bob');
+			dot.set(user, 'name.first', 'Bob');
 			user.name.first.should.equal('Bob');
-			dotAccess.set(user, 'name.status.banned', false);
+			dot.set(user, 'name.status.banned', false);
 			user.name.status.banned.should.equal(false);
-			dotAccess.set(user, 'name.middle', 'H');
+			dot.set(user, 'name.middle', 'H');
 			user.name.middle.should.equal('H');
-			dotAccess.set(user, 'name', 'Bob');
+			dot.set(user, 'name', 'Bob');
 			user.name.should.equal('Bob');
 		});
 	});

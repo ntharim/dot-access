@@ -1,9 +1,11 @@
 exports.get = function (obj, path) {
-  var get = new Function('_', 'return _.' + path);
-  return get(obj);
+  try {
+    return new Function('_', 'return _.' + path)(obj);
+  } catch (e) {
+    return obj[path];
+  }
 };
 
 exports.set = function (obj, path, value) {  
-  var set = new Function('_', 'val', '_.' + path + ' = val');
-  set(obj, value);
+  new Function('_', 'val', '_.' + path + ' = val')(obj, value);
 };
