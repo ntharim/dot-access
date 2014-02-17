@@ -6,6 +6,6 @@ exports.get = function (obj, path) {
   }
 };
 
-exports.set = function (obj, path, value) {  
+exports.set = function (obj, path, value) {
   new Function('_', 'val', '_.' + path + ' = val')(obj, value);
 };
