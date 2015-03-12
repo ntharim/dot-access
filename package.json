@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ntran013/dot-access.git"
+    "url": "https://github.com/nthtran/dot-access.git"
   },
   "devDependencies": {
     "chai": "*"
