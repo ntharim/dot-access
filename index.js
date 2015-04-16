@@ -7,5 +7,12 @@ exports.get = function (obj, path) {
 };
 
 exports.set = function (obj, path, value) {
-  new Function('_', 'val', '_.' + path + ' = val')(obj, value);
+  var segs = path.split('.');
+  segs.reduce(function set(deep, seg, i) {
+    return deep[seg] = segs.length - 1 === i
+      ? deep[seg] = value
+      : deep[seg] || {};
+  }, obj);
+
+  return obj;
 };
